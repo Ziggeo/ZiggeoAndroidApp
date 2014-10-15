@@ -5,6 +5,7 @@ import java.util.List;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +37,14 @@ public class MainActivity extends ActionBarActivity {
 
 		}
 
+	}
+	
+	
+	private void launchBrowser() {
+		String url = "http://www.google.com";
+		Intent i = new Intent(Intent.ACTION_VIEW);
+		i.setData(Uri.parse(url));
+		startActivity(i);
 	}
 
 

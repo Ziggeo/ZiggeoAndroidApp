@@ -5,11 +5,9 @@ import java.util.List;
 import com.ziggeo.androidsdk.VideoPlayer;
 import com.ziggeo.androidsdk.VideoRecorder;
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.helper.OnDismissVideoPlayerCallback;
 import com.ziggeo.androidsdk.helper.OnUploadCompletedCallback;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -17,11 +15,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -65,10 +60,16 @@ public class MainActivity extends ActionBarActivity {
 			
 		} 
 		
-		// Start the app in a different mode
+		// Show a message/image explaining the purpose of the app
 		else {
-			
+			// Inflate placeholder layout
+			RelativeLayout placeholderLayout = (RelativeLayout)LayoutInflater.from(this).inflate(R.layout.placeholder, null);
+			// Get main layout
+			FrameLayout mainLayout = (FrameLayout)findViewById(R.id.container);
+			// Add placeholder to main
+			mainLayout.addView(placeholderLayout);
 		}
+		
 
 	}
 	

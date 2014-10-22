@@ -25,6 +25,7 @@ import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
 
+	private final String TAG = "ZIGGEO";
 	private VideoRecorder videoRecorderFragment;
 	
 	@Override
@@ -32,10 +33,14 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// Check if the app was opened by an external app, i.e. the browser
+		/* Check if the app was opened by an URL, which can be of two types
+		 * 1: ziggeo://host/recorder/appToken
+		 * 2: ziggeo://host/player/appToken/videoToken
+		 * !No input validation/checking is being performed! 
+		 */
 		if (getIntent().getData() != null) {
 			
-			// Get the url that triggered the app
+			// Get the URL that triggered the app
 			Uri data = getIntent().getData();
 			
 			// Get its parameters, delimited by '/' 
@@ -43,15 +48,20 @@ public class MainActivity extends ActionBarActivity {
 			
 			// Get the App token, whose position depends on the url type
 			String mode = params.get(0); // Either a recorder or a player
-			String token = params.get(1); // "App token"
+			String appToken = params.get(1);
+			
+			Log.d(TAG, "Mode: " + mode + ", Token: " + appToken);
 			
 			// Set ziggeo token and start the recorder or player depending on the url
-			Ziggeo.initialize(token);
+			Ziggeo.initialize(appToken);
 			
-			if (mode.equals("recorder"))
-				setupRecorder();
-			else if (mode.equals("player"))
-				setupPlayer("", "");
+			if (mode.equals("recorder")) {
+				//setupRecorder(); // Launch a video recorder
+			}
+			else if (mode.equals("player")) {
+				String videoToken = params.get(2);
+//				setupPlayer(videoToken, "");
+			}
 			
 		} 
 		

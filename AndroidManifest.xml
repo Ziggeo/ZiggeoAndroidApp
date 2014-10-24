@@ -22,23 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="ziggeo" android:host="ziggeo.com" android:pathPattern="/.*" />
             </intent-filter>
-            
-<!--             <intent-filter>
-                <data android:scheme="http" /> 
-                <data android:host="www.gdimaggio.com" android:scheme="http" />
-                <data android:host="gdimaggio.com" android:scheme="http" /> 
-                <data android:pathPattern="/ziggeo_test.html.*"/>
-                
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>                   
-            </intent-filter> -->
             
         </activity>
     </application>
